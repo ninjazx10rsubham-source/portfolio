@@ -1,14 +1,19 @@
+// LOGIN WITH STORED DATA
 function login() {
   let user = document.getElementById("username").value;
   let pass = document.getElementById("password").value;
 
-  if (user === "subham" && pass === "1234") {
+  let storedUser = localStorage.getItem("username") || "subham";
+  let storedPass = localStorage.getItem("password") || "1234";
+
+  if (user === storedUser && pass === storedPass) {
     window.location.href = "dashboard.html";
   } else {
     alert("Invalid login");
   }
 }
 
+// DARK MODE
 function toggleMode() {
   document.body.classList.toggle("dark-mode");
 
@@ -20,6 +25,7 @@ function toggleMode() {
   }
 }
 
+// SECTION SWITCH
 function showSection(id) {
   let sections = document.querySelectorAll(".section");
 
@@ -36,6 +42,7 @@ function showSection(id) {
   }, 100);
 }
 
+// PROFILE
 function saveProfile() {
   let profile = {
     name: name.value,
@@ -57,6 +64,7 @@ function displayProfile() {
   `;
 }
 
+// ACHIEVEMENTS
 function addAchievement() {
   let val = achievementInput.value;
   let list = JSON.parse(localStorage.getItem("achievements")) || [];
@@ -71,6 +79,7 @@ function displayAchievements() {
   achievementList.innerHTML = list.map(a => `<li>${a}</li>`).join("");
 }
 
+// CERTIFICATES
 function addCertificate() {
   let val = certInput.value;
   let list = JSON.parse(localStorage.getItem("certs")) || [];
@@ -85,11 +94,13 @@ function displayCertificates() {
   certList.innerHTML = list.map(c => `<img src="${c}" width="150">`).join("");
 }
 
+// ABOUT
 function saveAbout() {
   localStorage.setItem("about", aboutText.value);
   aboutDisplay.innerText = aboutText.value;
 }
 
+// CONTACT
 function saveContact() {
   let data = {
     email: email.value,
@@ -113,8 +124,16 @@ function displayContact() {
   `;
 }
 
+// INITIAL LOAD
 window.onload = function () {
 
+  // DEFAULT LOGIN
+  if (!localStorage.getItem("username")) {
+    localStorage.setItem("username", "subham");
+    localStorage.setItem("password", "1234");
+  }
+
+  // DEFAULT CONTACT
   if (!localStorage.getItem("contact")) {
     localStorage.setItem("contact", JSON.stringify({
       email: "SCFU425001",
