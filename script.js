@@ -1,4 +1,3 @@
-// LOGIN WITH STORED DATA
 function login() {
   let user = document.getElementById("username").value;
   let pass = document.getElementById("password").value;
@@ -13,19 +12,15 @@ function login() {
   }
 }
 
-// DARK MODE
 function toggleMode() {
   document.body.classList.toggle("dark-mode");
 
   let btn = document.getElementById("modeBtn");
-  if (document.body.classList.contains("dark-mode")) {
-    btn.innerText = "☀️ Light Mode";
-  } else {
-    btn.innerText = "🌙 Dark Mode";
-  }
+  btn.innerText = document.body.classList.contains("dark-mode")
+    ? "☀️ Light Mode"
+    : "🌙 Dark Mode";
 }
 
-// SECTION SWITCH
 function showSection(id) {
   let sections = document.querySelectorAll(".section");
 
@@ -42,15 +37,17 @@ function showSection(id) {
   }, 100);
 }
 
-// PROFILE
+/* PROFILE */
 function saveProfile() {
   let profile = {
     name: name.value,
     dob: dob.value,
     photo: photo.value
   };
+
   localStorage.setItem("profile", JSON.stringify(profile));
   displayProfile();
+  displayTopProfile();
 }
 
 function displayProfile() {
@@ -64,7 +61,15 @@ function displayProfile() {
   `;
 }
 
-// ACHIEVEMENTS
+function displayTopProfile() {
+  let data = JSON.parse(localStorage.getItem("profile"));
+  if (!data) return;
+
+  topProfileImg.src = data.photo || "";
+  topProfileName.innerText = data.name || "Subham Dey";
+}
+
+/* ACHIEVEMENTS */
 function addAchievement() {
   let val = achievementInput.value;
   let list = JSON.parse(localStorage.getItem("achievements")) || [];
@@ -79,7 +84,7 @@ function displayAchievements() {
   achievementList.innerHTML = list.map(a => `<li>${a}</li>`).join("");
 }
 
-// CERTIFICATES
+/* CERTIFICATES */
 function addCertificate() {
   let val = certInput.value;
   let list = JSON.parse(localStorage.getItem("certs")) || [];
@@ -94,13 +99,13 @@ function displayCertificates() {
   certList.innerHTML = list.map(c => `<img src="${c}" width="150">`).join("");
 }
 
-// ABOUT
+/* ABOUT */
 function saveAbout() {
   localStorage.setItem("about", aboutText.value);
   aboutDisplay.innerText = aboutText.value;
 }
 
-// CONTACT
+/* CONTACT */
 function saveContact() {
   let data = {
     email: email.value,
@@ -108,6 +113,7 @@ function saveContact() {
     phone: phone.value,
     insta: insta.value
   };
+
   localStorage.setItem("contact", JSON.stringify(data));
   displayContact();
 }
@@ -124,16 +130,14 @@ function displayContact() {
   `;
 }
 
-// INITIAL LOAD
+/* LOAD */
 window.onload = function () {
 
-  // DEFAULT LOGIN
   if (!localStorage.getItem("username")) {
     localStorage.setItem("username", "subham");
     localStorage.setItem("password", "1234");
   }
 
-  // DEFAULT CONTACT
   if (!localStorage.getItem("contact")) {
     localStorage.setItem("contact", JSON.stringify({
       email: "SCFU425001",
@@ -144,6 +148,7 @@ window.onload = function () {
   }
 
   displayProfile();
+  displayTopProfile();
   displayAchievements();
   displayCertificates();
   displayContact();
