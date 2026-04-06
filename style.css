@@ -11,6 +11,31 @@ body {
   margin-top: 20px;
 }
 
+/* TOP PROFILE */
+.top-profile {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.top-profile img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 0 20px rgba(255,255,255,0.6);
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.top-profile img:hover {
+  transform: scale(1.1);
+}
+
+.top-profile h2 {
+  margin-top: 10px;
+}
+
+/* LOGIN */
 .login-container {
   width: 300px;
   margin: 120px auto;
@@ -21,6 +46,7 @@ body {
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 
+/* INPUT */
 input, textarea {
   width: 90%;
   padding: 10px;
@@ -29,6 +55,7 @@ input, textarea {
   border-radius: 10px;
 }
 
+/* BUTTON */
 button {
   padding: 10px 20px;
   border-radius: 20px;
@@ -40,11 +67,13 @@ button {
   transition: 0.3s;
 }
 
+/* HOVER */
 button:hover {
   transform: scale(1.08);
   box-shadow: 0 0 15px rgba(255,105,180,0.8);
 }
 
+/* NAV */
 nav {
   display: flex;
   justify-content: center;
@@ -57,6 +86,7 @@ nav button:hover {
   background: linear-gradient(45deg, #00c6ff, #0072ff);
 }
 
+/* SECTIONS */
 .section {
   display: none;
   margin: 20px auto;
@@ -72,6 +102,7 @@ nav button:hover {
   transform: translateY(-5px);
 }
 
+/* IMAGE */
 img {
   transition: 0.3s;
 }
@@ -80,11 +111,13 @@ img:hover {
   transform: scale(1.1);
 }
 
+/* DARK MODE */
 .dark-mode {
   background: linear-gradient(135deg, #1e1e2f, #121212);
   color: #eee;
 }
 
+/* FOCUS */
 input:focus, textarea:focus {
   box-shadow: 0 0 10px #ff6a00;
 }
