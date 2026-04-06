@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Subham Dey Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Welcome, Subham Dey</h1>
+
+<nav>
+  <button onclick="showSection('profile')">Profile</button>
+  <button onclick="showSection('achievements')">Achievements</button>
+  <button onclick="showSection('certificates')">Certificates</button>
+  <button onclick="showSection('about')">About Me</button>
+  <button onclick="showSection('contact')">Contact</button>
+</nav>
+
+<!-- PROFILE -->
+<div id="profile" class="section">
+  <h2>Profile</h2>
+  <input id="name" placeholder="Name"><br>
+  <input id="dob" placeholder="DOB"><br>
+  <input id="photo" placeholder="Profile Image URL"><br>
+  <button onclick="saveProfile()">Save</button>
+  <div id="profileDisplay"></div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div id="achievements" class="section">
+  <h2>Achievements</h2>
+  <input id="achievementInput" placeholder="Add achievement">
+  <button onclick="addAchievement()">Add</button>
+  <ul id="achievementList"></ul>
+</div>
+
+<!-- CERTIFICATES -->
+<div id="certificates" class="section">
+  <h2>Certificates</h2>
+  <input id="certInput" placeholder="Certificate image URL">
+  <button onclick="addCertificate()">Add</button>
+  <div id="certList"></div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section">
+  <h2>About Me / Resume</h2>
+  <textarea id="aboutText"></textarea><br>
+  <button onclick="saveAbout()">Save</button>
+  <p id="aboutDisplay"></p>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="section">
+  <h2>Contact</h2>
+  <input id="email" placeholder="Email"><br>
+  <input id="phone" placeholder="Phone"><br>
+  <button onclick="saveContact()">Save</button>
+  <p id="contactDisplay"></p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
